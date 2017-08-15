@@ -3,7 +3,8 @@
 
 <body>
 <h1>Iniciar Sesión</h1>
-<form name="form1" method="post" action="{% url 'inicio'%}">
+<form name="form1" method="POST" action="{% url 'inicio'%}">
+    {% csrf_token %} 
   <p>Usuario 
     <label for="txtNombre"></label>
     <input type="text" name="txtNombre" id="txtNombre">

@@ -3,6 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>Proyecto1_Compi2_py</Name>
     <RootNamespace>Proyecto1_Compi2_py</RootNamespace>
+    <InterpreterId>Global|PythonCore|2.7</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,6 +37,9 @@
     <Compile Include="Proyecto1_Compi2_py\wsgi.py" />
     <Compile Include="ServidorWeb\admin.py" />
     <Compile Include="ServidorWeb\apps.py" />
+    <Compile Include="ServidorWeb\constants.py" />
+    <Compile Include="ServidorWeb\Datos.py" />
+    <Compile Include="ServidorWeb\ttypes.py" />
     <Compile Include="ServidorWeb\migrations\__init__.py" />
     <Compile Include="ServidorWeb\models.py" />
     <Compile Include="ServidorWeb\tests.py" />
@@ -47,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="ServidorWeb\Datos-remote" />
     <Content Include="ServidorWeb\templates\index.html" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +59,9 @@
     <Folder Include="ServidorWeb\" />
     <Folder Include="ServidorWeb\migrations\" />
     <Folder Include="ServidorWeb\templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|2.7" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

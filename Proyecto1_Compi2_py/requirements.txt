@@ -1,1 +1,7 @@
-django >=1.9, <2
+Django==1.11.4
+pip==9.0.1
+pytz==2017.2
+setuptools==28.8.0
+six==1.10.0
+thrift==0.10.0
+thrift3-binary-protocol==0.2
