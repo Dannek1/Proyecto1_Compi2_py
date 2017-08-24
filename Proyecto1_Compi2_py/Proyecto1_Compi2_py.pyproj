@@ -36,6 +36,9 @@
     <Compile Include="Proyecto1_Compi2_py\urls.py" />
     <Compile Include="Proyecto1_Compi2_py\wsgi.py" />
     <Compile Include="ServidorWeb\admin.py" />
+    <Compile Include="ServidorWeb\Analizador.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ServidorWeb\apps.py" />
     <Compile Include="ServidorWeb\constants.py" />
     <Compile Include="ServidorWeb\Datos.py" />
