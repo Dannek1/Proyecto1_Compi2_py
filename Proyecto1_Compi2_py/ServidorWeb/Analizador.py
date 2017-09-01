@@ -1,7 +1,6 @@
 import ply.lex
 
 
-
 tokens = ['SUMA','RESTA','MULTI','DIV','POW','INCR','DECR','I_ASIG',
           'PUNTO_COMA','COMA','PUNTO','IGUAL','DISTINTO','MENOR',
           'MAYOR','MENOR_IGUAL','MAYOR_IGUAL','OR','AND','NOT',
@@ -145,6 +144,8 @@ def t_newline(t):
 
 def t_error(t):
     print "ERROR Caracter Invalido: '%s'" % t.value[0]
+    global flag_error
+    flag_error = "ERROR"
     t.lexer.skip(1)    
     
 
@@ -160,8 +161,14 @@ def analizar(cadena):
         if not tok :
              break
         else:   
-            e=e + tok.value +"#"
+            e=e + tok.value + " "
             print tok
+    
+        try:
+            e=flag_error
+        except:
+            pass
+    
     return e
     
         

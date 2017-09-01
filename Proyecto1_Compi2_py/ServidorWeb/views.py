@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from . import Datos
 
 import Analizador
-#import ply.lex
+import ply.lex
 
 
 
@@ -48,9 +48,17 @@ def inicio(request):
         
         analisis=Analizador.analizar(cadena)
         
-        cadena="[\n \" validar \":1500,\n \"login\":[\n \"comando\" => \"" + cadena+"\'\"\n]\n]"
+        if analisis!="ERROR":
+            cadena="[\n \"validar\":1500,\n \"login\":[\n \"comando\": \"" + cadena+"\"\n]\n]" 
+            respuesta=Envio(cadena)       
+        else:
+            respuesta="ERROR"
 
-        respuesta=Envio(cadena)
+
+
+       # cadena="[\n \"validar\":1500,\n \"login\":[\n \"comando\": \"SELECCIONAR * DE usuarios DONDE usuario == "+nombre+" && password == \""+contra+"\";\"\n]\n]"
+
+
           
         return HttpResponse(respuesta)
 
