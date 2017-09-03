@@ -22,6 +22,10 @@ def p_inicio(p):
     '''inicio : sentencias'''
     print "inicio"
 
+#Se debe de hacer un "metodo " por cada opcion de la produccion
+# sentencias := sentencias sentencia
+#             | sentencia   
+
 def p_sentencias1(p):
     '''sentencias : sentencias sentencia'''
     print "sentencias1"
