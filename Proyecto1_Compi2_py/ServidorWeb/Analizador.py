@@ -55,7 +55,11 @@ reservadas = {
 	'MIENTRAS': 'R_MIENTRAS',
 	'DETENER': 'R_DETENER',
 	'CONTAR': 'R_CONTAR',
+    
+    'FECHA':'R_FECHA',
+    'FECHA_HORA':'R_FECHA_HORA',
 
+    
     'TEXT': 'R_TEXT',
 	'INTEGER': 'R_INTEGER',
     'DOUBLE': 'R_DOUBLE',
@@ -149,28 +153,10 @@ def t_error(t):
     t.lexer.skip(1)    
     
 
-   
+analizador =ply.lex.lex()    
 
-def analizar(cadena):
-    lex=ply.lex.lex()
-    lex.input(cadena)
-    e=""
-    while True:
-        tok = lex.token()
-        
-        if not tok :
-             break
-        else:   
-            e=e + tok.value + " "
-            print tok
-    
-        try:
-            e=flag_error
-        except:
-            pass
-    
-    return e
-    
+
+
         
     
 

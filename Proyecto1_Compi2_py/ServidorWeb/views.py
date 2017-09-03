@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 
 from . import Datos
 
-import Analizador
+import Sintactico
 import ply.lex
 
 
@@ -46,7 +46,7 @@ def inicio(request):
         
         cadena= "SELECCIONAR * DE usuarios DONDE usuario == "+nombre+" && password == \""+contra+"\";"
         
-        analisis=Analizador.analizar(cadena)
+        analisis=Sintactico.analizar(cadena)
         
         if analisis!="ERROR":
             cadena="[\n \"validar\":1500,\n \"login\":[\n \"comando\": \"" + cadena+"\"\n]\n]" 
