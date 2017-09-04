@@ -5,7 +5,8 @@ tokens = ['SUMA','RESTA','MULTI','DIV','POW','INCR','DECR','I_ASIG',
           'PUNTO_COMA','COMA','PUNTO','IGUAL','DISTINTO','MENOR',
           'MAYOR','MENOR_IGUAL','MAYOR_IGUAL','OR','AND','NOT',
           'PAR_IZ','PAR_DER','COR_IZ','COR_Der','ID','ENTERO','DECIMAL',
-          'CADENA','FECHA','FECHA_HORA','DOS_PUNTO','BOOLEAN'
+          'CADENA','FECHA','FECHA_HORA','DOS_PUNTO','BOOLEAN','ABRIR',
+          'CERRAR','COMILLAS','XML','IPAQUETE'
 ]
 
 reservadas = {
@@ -67,6 +68,24 @@ reservadas = {
 	'DATE': 'R_DATE',
 	'DATETIME': 'R_DATETIME',
 
+    '\"validar\"':'R_VALIDAR',
+    '\"login\"':'R_LOGIN',
+    '\"paquete\"':'R_PAQUETE',
+     '\"tipo\"':'R_TIPO_PAQUETE',
+    '\"error\"':'R_ERROR',
+    '\"lenguaje\"':'R_LENGUAJE',
+    '\"otro\"':'R_OTRO',
+    '\"msg\"':'R_MSG',
+    '\"datos\"':'R_DATOS',
+    '\"Lexico\"':'R_LEXICO',
+    '\"Archivo\"':'R_ARCHIVO',
+    '\"col\"':'R_COL',
+    '\"fila\"':'R_FILA',
+    '\"usql\"':'R_USQL',
+    '\"reporte\"':'R_REPORTE',
+    'true':'R_TRUE',
+    'false':'R_FALSE',
+
     'No': 'R_NO',
 	'Nulo':'R_NULO',
 	'Autoincrementable': 'R_AUTOINCREMENTABLE',
@@ -101,9 +120,18 @@ t_PUNTO_COMA = r';'
 t_COMA = r','
 t_PUNTO = r'\.'
 t_DOS_PUNTO = r':'
-t_CADENA = r'("[^"]*")'
+t_ABRIR = r'\['
+t_CERRAR = r'\]'
+t_COMILLAS= r'\"'
+t_IPAQUETE= r'=>'
+t_XML = r'(<.*>)'
 t_FECHA = r'[1-3][0-9][-][0-1][0-9][-][1-9][0-9][0-9][0-9]'
 t_FECHA_HORA = r'[1-3][0-9][-][0-1][0-9][-][1-9][0-9][0-9][0-9][" "][0-2]*[0-9][:][0-5][0-9][:][0-5][0-9]'
+
+def t_CADENA(t):
+    r'("[^"]*")'
+    t.type = reservadas.get(t.value,'CADENA')    # Check for reserved words
+    return t
 
 
 def t_code_lbrace(t):
@@ -154,17 +182,3 @@ def t_error(t):
     
 
 analizador =ply.lex.lex()    
-
-
-
-        
-    
-
-
-    
-
-
-
-
-
-

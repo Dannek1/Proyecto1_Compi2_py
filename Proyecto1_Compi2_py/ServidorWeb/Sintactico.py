@@ -14,10 +14,15 @@ precendia = (
     ('nonassoc','PAR_IZ','PAR_DER'),
     )
 
-def p_programa(p):
+def p_programa1(p):
     '''programa : inicio'''
-    print "programa"
+    print "programa1"
 
+def p_programa2(p):
+    '''programa : ABRIR paquete CERRAR'''
+    print "programa2"
+
+#primer analizador (SQL)
 def p_inicio(p):
     '''inicio : sentencias'''
     print "inicio"
@@ -757,6 +762,109 @@ def p_parametrosejec1(p):
 def p_parametrosejec2(p):
     '''parametrosejec : aritmetica '''
     print "parametrosejec2"     
+
+#Paquete
+def p_paquete(p):
+    '''paquete : login'''
+    print "inicio1"
+
+def p_inicio2(p):
+    '''paquete : paquetes'''
+    print "inicio2"
+
+def p_login(p):
+    '''login : validar COMA logins'''
+    print "login"
+
+def p_validar(p):
+    ''' validar : R_VALIDAR DOS_PUNTO ENTERO'''
+    print "validar"
+
+def p_logins1(p):
+    ''' logins : R_LOGIN DOS_PUNTO ABRIR datosl COMA validacionl CERRAR'''
+    print "logins1"
+
+def p_logins2(p):
+    ''' logins : R_LOGIN DOS_PUNTO ABRIR validacionl CERRAR'''
+    print "logins2"
+
+def p_datosl1(p):
+    '''datosl : datosl COMA datol'''
+    print "datosl1"
+
+def p_datosl2(p):
+    '''datosl : datol '''
+    print "datosl2"
+
+def p_datol(p):
+    '''datol : CADENA DOS_PUNTO CADENA'''
+    print "datol"
+
+def p_validacionl1(p):
+    '''validacionl : R_LOGIN DOS_PUNTO R_TRUE'''
+    print "validacionl1"
+
+def p_validacionl2(p):
+    '''validacionl : R_LOGIN DOS_PUNTO R_FALSE'''
+    print "validacionl2"
+
+def p_paquetes(p):
+    '''paquetes : R_PAQUETE DOS_PUNTO tipopaquete'''
+    print "paquetes"
+
+def p_tipopaquete1(p):
+    '''tipopaquete : usql'''
+    print "tipopaquete1"
+
+def p_tipopaquete2(p):
+    '''tipopaquete : reporte'''
+    print "tipopaquete2"
+
+def p_tipopaquete3(p):
+    '''tipopaquete : paqueteerror'''
+    print "tipopaquete3"
+
+def p_usql(p):
+    ''' usql : R_USQL COMA R_DATOS DOS_PUNTO ABRIR  datosusql CERRAR'''
+    print "usql"
+
+def p_datosusql1(p):
+    '''datosusql : datosusql datousql'''
+    print "datosusql1"
+
+def p_datosusql2(p):
+    '''datosusql : datousql'''
+    print "datosusql2"
+
+def p_datousql(p):
+    '''datousql : ABRIR valorespaquete CERRAR'''
+    print "datousql"
+
+def p_valorespaquete1(p):
+    '''valorespaquete : valorespaquete valorpaquete '''
+    print "valorespaquete1"
+
+def p_valorespaquete2(p):
+    '''valorespaquete :  valorpaquete '''
+    print "valorespaquete2"
+
+def p_valorpaquete(p):
+    '''valorpaquete : CADENA  IPAQUETE   CADENA'''
+    print "valorpaquete"
+
+def p_reporte(p):
+    ''' reporte : R_REPORTE COMA R_DATOS DOS_PUNTO ABRIR  XML CERRAR'''
+    print "reporte"
+
+def p_paqueteerror(p):
+    '''paqueteerror : R_ERROR COMA R_TIPO_PAQUETE DOS_PUNTO tipoerror COMA R_MSG DOS_PUNTO CADENA COMA  R_DATOS DOS_PUNTO cuerpoerrorpack '''
+    print "paqueteerror"
+
+def p_cuerpoerrorpack(p):
+    ''' cuerpoerrorpack : ABRIR R_ERROR DOS_PUNTO R_LEXICO COMA R_ARCHIVO DOS_PUNTO CADENA COMA R_COL DOS_PUNTO ENTERO  COMA R_FILA DOS_PUNTO ENTERO  CERRAR '''
+    print "cuerpoerrorpack"
+
+
 
 def p_error(p):
     global flag_error

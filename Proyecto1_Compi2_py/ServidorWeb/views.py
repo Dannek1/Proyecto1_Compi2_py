@@ -13,6 +13,8 @@ import ply.lex
 
 
 
+
+
 def index(request):
     return render(request, 'index.html')    
 
@@ -50,13 +52,23 @@ def inicio(request):
         
         if analisis!="ERROR":
             cadena="[\n \"validar\":1500,\n \"login\":[\n \"comando\": \"" + cadena+"\"\n]\n]" 
-            respuesta=Envio(cadena)       
+
+            recibo=Envio(cadena)       
+
+            paquete = Sintactico.analizar(recibo)
+
+            if paquete!="ERROR":
+                respuesta="EXITO"
+            else:
+                respuesta="ERROR"
+
         else:
             respuesta="ERROR"
 
+        
+       
 
-
-       # cadena="[\n \"validar\":1500,\n \"login\":[\n \"comando\": \"SELECCIONAR * DE usuarios DONDE usuario == "+nombre+" && password == \""+contra+"\";\"\n]\n]"
+       
 
 
           
