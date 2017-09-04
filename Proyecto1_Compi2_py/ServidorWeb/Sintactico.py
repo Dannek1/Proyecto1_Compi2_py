@@ -1,6 +1,7 @@
 import ply.yacc as yacc
 
 from Analizador import tokens
+from Semantico import *
 
 
 precendia = (
@@ -20,6 +21,7 @@ def p_programa1(p):
 
 def p_programa2(p):
     '''programa : ABRIR paquete CERRAR'''
+    p[0]=programa2(p[2],"programa")
     print "programa2"
 
 #primer analizador (SQL)
@@ -766,14 +768,17 @@ def p_parametrosejec2(p):
 #Paquete
 def p_paquete(p):
     '''paquete : login'''
+    p[0]=paquete(p[1],"paquete")
     print "inicio1"
 
-def p_inicio2(p):
+def p_paquete2(p):
     '''paquete : paquetes'''
-    print "inicio2"
+    p[0]=paquete2(p[1],"paquete")
+    print "paquete2"
 
 def p_login(p):
     '''login : validar COMA logins'''
+    p[0]=login(p[3],"login")
     print "login"
 
 def p_validar(p):
@@ -782,30 +787,37 @@ def p_validar(p):
 
 def p_logins1(p):
     ''' logins : R_LOGIN DOS_PUNTO ABRIR datosl COMA validacionl CERRAR'''
+    p[0]=logins1(p[4],p[6],"logins")
     print "logins1"
 
 def p_logins2(p):
     ''' logins : R_LOGIN DOS_PUNTO ABRIR validacionl CERRAR'''
+    p[0]=logins2(p[4],"logins")
     print "logins2"
 
 def p_datosl1(p):
     '''datosl : datosl COMA datol'''
+    p[0]=datosl1(p[1],p[3],"datosl1")
     print "datosl1"
 
 def p_datosl2(p):
     '''datosl : datol '''
+    p[0]=datosl2(p[1],"datosl2")
     print "datosl2"
 
 def p_datol(p):
     '''datol : CADENA DOS_PUNTO CADENA'''
+    p[0]=datol(cadena(p[1]),cadena(p[3]),datol)
     print "datol"
 
 def p_validacionl1(p):
     '''validacionl : R_LOGIN DOS_PUNTO R_TRUE'''
+    p[0]=validacionl1(verdadero(p[3]),"validacion")
     print "validacionl1"
 
 def p_validacionl2(p):
     '''validacionl : R_LOGIN DOS_PUNTO R_FALSE'''
+    p[0]=validacionl2(falso(p[3]),"validacion")
     print "validacionl2"
 
 def p_paquetes(p):
@@ -880,12 +892,17 @@ def p_error(p):
 
 def analizar(cadena):
    parser = yacc.yacc()
-   result = parser.parse(cadena)
+   parseo = parser.parse(cadena)
     
    try:
        result=flag_error
    except:
-       pass
+        result=parseo
+
+   try :
+        result = parseo.imprimir()
+   except:
+        result=parseo
     
    return result
        

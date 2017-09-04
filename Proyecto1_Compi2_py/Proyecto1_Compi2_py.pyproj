@@ -42,6 +42,9 @@
     <Compile Include="ServidorWeb\apps.py" />
     <Compile Include="ServidorWeb\constants.py" />
     <Compile Include="ServidorWeb\Datos.py" />
+    <Compile Include="ServidorWeb\Semantico.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ServidorWeb\Sintactico.py">
       <SubType>Code</SubType>
     </Compile>

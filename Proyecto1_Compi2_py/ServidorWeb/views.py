@@ -58,21 +58,26 @@ def inicio(request):
             paquete = Sintactico.analizar(recibo)
 
             if paquete!="ERROR":
-                respuesta="EXITO"
+                respuesta=paquete
             else:
                 respuesta="ERROR"
 
         else:
             respuesta="ERROR"
-
         
-       
-
-       
-
-
-          
-        return HttpResponse(respuesta)
+        try:
+            valores = respuesta.split(";")
+        
+            if valores[1]=="true":
+                respuesta="Login Exitoso"    
+            else:
+                respuesta= "login fallido"
+            return HttpResponse(respuesta)
+        except:
+            respuesta= "login fallido"
+            
+            return                
+        
 
     else:
         return render(request, 'index.html')
