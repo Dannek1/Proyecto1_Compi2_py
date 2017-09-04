@@ -864,7 +864,13 @@ def p_cuerpoerrorpack(p):
     ''' cuerpoerrorpack : ABRIR R_ERROR DOS_PUNTO R_LEXICO COMA R_ARCHIVO DOS_PUNTO CADENA COMA R_COL DOS_PUNTO ENTERO  COMA R_FILA DOS_PUNTO ENTERO  CERRAR '''
     print "cuerpoerrorpack"
 
+def p_tipoerror1(p):
+    '''tipoerror : R_LEXICO '''
+    print "tipoerror1"
 
+def p_tipoerror2(p):
+    '''tipoerror : R_OTRO '''
+    print "tipoerror2"
 
 def p_error(p):
     global flag_error

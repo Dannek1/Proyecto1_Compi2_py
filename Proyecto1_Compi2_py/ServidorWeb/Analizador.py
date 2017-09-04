@@ -6,7 +6,8 @@ tokens = ['SUMA','RESTA','MULTI','DIV','POW','INCR','DECR','I_ASIG',
           'MAYOR','MENOR_IGUAL','MAYOR_IGUAL','OR','AND','NOT',
           'PAR_IZ','PAR_DER','COR_IZ','COR_Der','ID','ENTERO','DECIMAL',
           'CADENA','FECHA','FECHA_HORA','DOS_PUNTO','BOOLEAN','ABRIR',
-          'CERRAR','COMILLAS','XML','IPAQUETE'
+          'CERRAR',#'COMILLAS', 
+           'XML','IPAQUETE'
 ]
 
 reservadas = {
@@ -122,7 +123,7 @@ t_PUNTO = r'\.'
 t_DOS_PUNTO = r':'
 t_ABRIR = r'\['
 t_CERRAR = r'\]'
-t_COMILLAS= r'\"'
+#t_COMILLAS= r'\"'
 t_IPAQUETE= r'=>'
 t_XML = r'(<.*>)'
 t_FECHA = r'[1-3][0-9][-][0-1][0-9][-][1-9][0-9][0-9][0-9]'
