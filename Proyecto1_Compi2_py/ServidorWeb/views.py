@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http.request import HttpRequest
 
 from thrift.transport import TSocket
 from thrift.transport import TTransport
@@ -38,6 +39,11 @@ def Envio(cadena):
     transport.close()
 
     return respuesta
+
+
+
+
+
     
 def inicio(request):
     if(request.method=='POST'):
@@ -61,7 +67,7 @@ def inicio(request):
                 respuesta=paquete
             else:
                 respuesta="ERROR"
-
+        
         else:
             respuesta="ERROR"
         
@@ -69,15 +75,39 @@ def inicio(request):
             valores = respuesta.split(";")
         
             if valores[1]=="true":
-                respuesta="Login Exitoso"    
+                respuesta="Login Exitoso" 
+                documentos = str(valores[0]).split(",")
+                user =str(documentos[0]).split(":")
+                name =str(documentos[1]).split(":")
+                
+                return HttpResponseRedirect('Mesa.html?usuario='+user[1]+'&nombre='+name[1])
+                #return mesa(request)
+                #return HttpResponseRedirect('Mesa')
+                 
+                 
             else:
                 respuesta= "login fallido"
-            return HttpResponse(respuesta)
+                return HttpResponseRedirect( 'index.html?respuesta='+respuesta)
         except:
             respuesta= "login fallido"
             
-            return                
+            return HttpResponseRedirect( 'index.html?respuesta='+respuesta)
         
-
+    
     else:
         return render(request, 'index.html')
+
+def mesa(request):
+    return render(request, 'Mesa.html')
+
+def salir(request):
+    if(request.method=='GET'):
+       
+        nuewvorequest= HttpRequest()
+        nuewvorequest.user = request.user
+        nuewvorequest.method= 'GET'    
+        
+        return inicio(nuewvorequest)
+    else:
+        return render(request, 'Mesa.html')
+    

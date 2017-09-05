@@ -1,7 +1,23 @@
+
 <html>
 <head><title>Inicio Sesión</title></head>
-
 <body>
+
+<script>
+	
+	function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+	
+	
+	var respuesta = getParameterByName('respuesta');		
+	document.write("<p>"+respuesta+"</p>")
+	
+</script>
+
 <h1>Iniciar Sesión</h1>
 <form name="form1" method="POST" action="{% url 'inicio'%}">
     {% csrf_token %} 
@@ -14,7 +30,8 @@
     <input type="password" name="txtContra" id="txtContra">
   </p>
   <p>
-    <input type="submit" name="btnAceptar" id="btnAceptar" value="Enviar">
+    <input type="submit" name="btnEntrar" id="btnEntrar" value="Entrar">
+    	
   </p>
 </form>
 <p>&nbsp;</p>

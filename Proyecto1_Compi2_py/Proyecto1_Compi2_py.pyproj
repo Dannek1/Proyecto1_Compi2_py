@@ -62,6 +62,7 @@
     <Content Include="requirements.txt" />
     <Content Include="ServidorWeb\Datos-remote" />
     <Content Include="ServidorWeb\templates\index.html" />
+    <Content Include="ServidorWeb\templates\Mesa.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Proyecto1_Compi2_py\" />

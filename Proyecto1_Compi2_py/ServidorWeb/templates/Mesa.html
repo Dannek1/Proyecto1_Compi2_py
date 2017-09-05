@@ -1,0 +1,41 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Entorno de Trabajo</title>
+</head>
+
+<body>
+<script>
+	
+	function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+	
+	
+	var respuesta = getParameterByName('respuesta');		
+	document.write("<p>"+respuesta+"</p>")
+	
+</script>
+
+<h1>Mesa de Trabajo</h1>
+<form name="form2" method="GET" action="{% url 'salir'%}">
+{% csrf_token %} 
+  <input type="submit" name="btnCerrar" id="btnCerrar" value="Salir">
+
+</form>
+<p>&nbsp;</p>
+<form id="form1" name="form1" method="POST" action="">
+  <p>
+    <label for="entrada"><br />
+    </label>
+  {% csrf_token %} </p>
+  <p>
+    <textarea name="entrada" cols="150" rows="20" id="entrada"></textarea>
+    <input type="submit" name="btnEnviar" id="btnEnviar" value="Ejecutar">
+  </p>
+</form>
+<p>&nbsp;</p>	
+</body>
+</html>
