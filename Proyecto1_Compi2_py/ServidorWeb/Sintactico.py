@@ -822,23 +822,38 @@ def p_validacionl2(p):
 
 def p_paquetes(p):
     '''paquetes : R_PAQUETE DOS_PUNTO tipopaquete'''
+    p[0]=paquetes(p[3],"paquetes")
     print "paquetes"
 
 def p_tipopaquete1(p):
     '''tipopaquete : usql'''
+    p[0]=tipopaquete1(p[1],"tipopaquete1")
     print "tipopaquete1"
 
 def p_tipopaquete2(p):
     '''tipopaquete : reporte'''
+    p[0]=tipopaquete2(p[1],"tipopaquete2")
     print "tipopaquete2"
 
 def p_tipopaquete3(p):
     '''tipopaquete : paqueteerror'''
+    p[0]=tipopaquete3(p[1],"tipopaquete3")
     print "tipopaquete3"
 
-def p_usql(p):
+def p_usql1(p):
     ''' usql : R_USQL COMA R_DATOS DOS_PUNTO ABRIR  datosusql CERRAR'''
-    print "usql"
+    p[0]=usql1(p[6],"usql1")
+    print "usql1"
+
+def p_usql2(p):
+    ''' usql : R_USQL COMA mensajear'''
+    p[0]=usql1(p[3],"usql2")
+    print "usql2"    
+
+def p_mensajear(p):
+    '''mensajear : R_MENSAJE DOS_PUNTO CADENA'''
+    p[0]=mensajear(cadena(p[3]),"mensajear")
+    print "mensajear"
 
 def p_datosusql1(p):
     '''datosusql : datosusql datousql'''

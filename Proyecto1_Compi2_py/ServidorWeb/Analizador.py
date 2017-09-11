@@ -84,6 +84,7 @@ reservadas = {
     '\"fila\"':'R_FILA',
     '\"usql\"':'R_USQL',
     '\"reporte\"':'R_REPORTE',
+    '\"mensaje\"':'R_MENSAJE',
     'true':'R_TRUE',
     'false':'R_FALSE',
 

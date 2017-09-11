@@ -41,9 +41,6 @@ def Envio(cadena):
     return respuesta
 
 
-
-
-
     
 def inicio(request):
     if(request.method=='POST'):
@@ -79,6 +76,7 @@ def inicio(request):
                 documentos = str(valores[0]).split(",")
                 user =str(documentos[0]).split(":")
                 name =str(documentos[1]).split(":")
+           
                 
                 return HttpResponseRedirect('Mesa.html?usuario='+user[1]+'&nombre='+name[1])
                 #return mesa(request)
@@ -87,27 +85,45 @@ def inicio(request):
                  
             else:
                 respuesta= "login fallido"
-                return HttpResponseRedirect( 'index.html?respuesta='+respuesta)
+                return render(request, 'index.html')
         except:
             respuesta= "login fallido"
             
-            return HttpResponseRedirect( 'index.html?respuesta='+respuesta)
+            return render(request, 'index.html')
         
     
     else:
+         
+        cadena="[\n \"paquete\" : \"fin\" \n]"                 
+        Envio(cadena)
         return render(request, 'index.html')
 
 def mesa(request):
     return render(request, 'Mesa.html')
 
-def salir(request):
-    if(request.method=='GET'):
-       
-        nuewvorequest= HttpRequest()
-        nuewvorequest.user = request.user
-        nuewvorequest.method= 'GET'    
+
+def ejec(request):
+    if(request.method=='POST'):
+       entrada = request.POST['entrada']
+       analisis=Sintactico.analizar(entrada)
+
+       if analisis!="ERROR":
+          entrada="[\n \"paquete\" : \"usql\" ,\n \"instruccion\": \"" + entrada+"\",\n]" 
+          recibo=Envio(entrada)
+          paquete = Sintactico.analizar(recibo)
+
+          if paquete!="ERROR":
+                respuesta=paquete
+          else:
+                respuesta="ERROR"  
+
+
+       else:
+          respuesta="ERROR"   
+
+       return HttpResponseRedirect( 'Mesa.html?respuesta='+respuesta)
         
-        return inicio(nuewvorequest)
-    else:
-        return render(request, 'Mesa.html')
+    else: 
+       
+       return render(request, 'Mesa.html')
     

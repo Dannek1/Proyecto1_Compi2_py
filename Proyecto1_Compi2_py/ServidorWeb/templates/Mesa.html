@@ -4,6 +4,32 @@
 </head>
 
 <body>
+
+
+<h1>Mesa de Trabajo</h1>
+<form name="form2" method="GET	" action="{% url 'salir'%}">
+{% csrf_token %} 
+  <input type="submit" name="btnCerrar" id="btnCerrar" value="Salir">
+
+</form>
+<p>&nbsp;</p>
+<form id="form1" name="form1" method="POST" action="{% url 'ejec'%}">
+  <p>
+    <label for="entrada"><br />
+    </label>
+  {% csrf_token %} </p>
+  <p>
+    <textarea name="entrada" cols="150" rows="20" id="entrada"></textarea>
+  </p>
+  <p>
+    <input type="submit" name="btnEnviar" id="btnEnviar" value="Ejecutar">
+  </p>
+  <p>
+    <label for="txtConsola"></label>
+    <textarea name="txtConsola" cols="150" rows="10" id="txtConsola"></textarea>
+  </p>
+</form>
+
 <script>
 	
 	function getParameterByName(name) {
@@ -15,27 +41,9 @@
 	
 	
 	var respuesta = getParameterByName('respuesta');		
-	document.write("<p>"+respuesta+"</p>")
+	document.getElementById("txtConsola").value=respuesta;
 	
 </script>
-
-<h1>Mesa de Trabajo</h1>
-<form name="form2" method="GET" action="{% url 'salir'%}">
-{% csrf_token %} 
-  <input type="submit" name="btnCerrar" id="btnCerrar" value="Salir">
-
-</form>
-<p>&nbsp;</p>
-<form id="form1" name="form1" method="POST" action="">
-  <p>
-    <label for="entrada"><br />
-    </label>
-  {% csrf_token %} </p>
-  <p>
-    <textarea name="entrada" cols="150" rows="20" id="entrada"></textarea>
-    <input type="submit" name="btnEnviar" id="btnEnviar" value="Ejecutar">
-  </p>
-</form>
 <p>&nbsp;</p>	
 </body>
 </html>

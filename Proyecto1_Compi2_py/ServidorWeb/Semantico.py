@@ -138,25 +138,89 @@ class validacionl2(Nodo):
         
         return son1  
 
-class paquetes(Nodo):
-    '''paquetes : R_PAQUETE DOS_PUNTO tipopaquete'''
-    print "paquetes"
+class paquetes(Nodo):   
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1  
 
 class tipopaquete1(Nodo):
-    '''tipopaquete : usql'''
-    print "tipopaquete1"
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1 
 
 class tipopaquete2(Nodo):
-    '''tipopaquete : reporte'''
-    print "tipopaquete2"
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1 
 
 class tipopaquete3(Nodo):
-    '''tipopaquete : paqueteerror'''
-    print "tipopaquete3"
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
 
-class usql(Nodo):
-    ''' usql : R_USQL COMA R_DATOS DOS_PUNTO ABRIR  datosusql CERRAR'''
-    print "usql"
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1 
+
+class usql1(Nodo):
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1 
+
+class usql2(Nodo):
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1    
+
+class mensajear(Nodo):
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1  
 
 class datosusql1(Nodo):
     '''datosusql : datosusql datousql'''
