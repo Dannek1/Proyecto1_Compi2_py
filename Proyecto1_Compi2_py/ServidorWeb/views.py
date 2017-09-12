@@ -7,6 +7,8 @@ from thrift.protocol import TBinaryProtocol
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
+import os
+
 from . import Datos
 
 import Sintactico
@@ -113,7 +115,18 @@ def ejec(request):
           paquete = Sintactico.analizar(recibo)
 
           if paquete!="ERROR":
-                respuesta=paquete
+                try:
+                    Crear_carpeta()
+                    back=paquete.split("#")
+                    print "Hola"
+                    ruta="C:\\Archivos-Base\\"+back[1][2:-1]+".udmp"
+                    f = open (ruta,'w')
+                    f.write(back[0])
+                    f.close()
+                    
+                    respuesta=back[0];
+                except:
+                    respuesta=paquete
           else:
                 respuesta="ERROR"  
 
@@ -127,3 +140,8 @@ def ejec(request):
        
        return render(request, 'Mesa.html')
     
+def Crear_carpeta():
+    try:
+        os.makedirs("C:\Archivos-Base")
+    except:
+        pass

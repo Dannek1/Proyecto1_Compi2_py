@@ -7,7 +7,7 @@ tokens = ['SUMA','RESTA','MULTI','DIV','POW','INCR','DECR','I_ASIG',
           'PAR_IZ','PAR_DER','COR_IZ','COR_Der','ID','ENTERO','DECIMAL',
           'CADENA','FECHA','FECHA_HORA','DOS_PUNTO','BOOLEAN','ABRIR',
           'CERRAR',#'COMILLAS', 
-           'XML','IPAQUETE'
+           'XML','IPAQUETE','CORI','CORD'
 ]
 
 reservadas = {
@@ -87,7 +87,6 @@ reservadas = {
     '\"mensaje\"':'R_MENSAJE',
     'true':'R_TRUE',
     'false':'R_FALSE',
-
     'No': 'R_NO',
 	'Nulo':'R_NULO',
 	'Autoincrementable': 'R_AUTOINCREMENTABLE',
@@ -136,11 +135,11 @@ def t_CADENA(t):
     return t
 
 
-def t_code_lbrace(t):
+def t_CORI(t):
     r'\{'
     return t
 
-def t_code_rbrace(t):
+def t_CORD(t):
     r'\}'
     return t
 

@@ -206,11 +206,36 @@ class usql2(Nodo):
     def imprimir(self):
         
         son1 = self.son1.imprimir()
-
+        
         
         return son1    
 
+class usql3(Nodo):
+    def __init__(self,son1,son2, name):
+        self.name = name
+        self.son1 = son1 
+        self.son2 = son2             
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+        son2 = self.son2.imprimir()
+        
+        return son1+" # "+son2        
+
 class mensajear(Nodo):
+    def __init__(self,son1, name):
+        self.name = name
+        self.son1 = son1       
+
+    def imprimir(self):
+        
+        son1 = self.son1.imprimir()
+
+        
+        return son1 
+
+class archivo(Nodo):
     def __init__(self,son1, name):
         self.name = name
         self.son1 = son1       

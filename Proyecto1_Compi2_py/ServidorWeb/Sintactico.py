@@ -847,13 +847,23 @@ def p_usql1(p):
 
 def p_usql2(p):
     ''' usql : R_USQL COMA mensajear'''
-    p[0]=usql1(p[3],"usql2")
+    p[0]=usql2(p[3],"usql2")
     print "usql2"    
+
+def p_usql3(p):
+    ''' usql : R_USQL COMA mensajear COMA archivo'''
+    p[0]=usql3(p[3],p[5],"usql2")
+    print "usql2"   
 
 def p_mensajear(p):
     '''mensajear : R_MENSAJE DOS_PUNTO CADENA'''
     p[0]=mensajear(cadena(p[3]),"mensajear")
     print "mensajear"
+
+def p_archivo(p):
+    '''archivo : R_ARCHIVO DOS_PUNTO CADENA'''
+    p[0]=archivo(cadena(p[3]),"archivo")
+    print "archivo"
 
 def p_datosusql1(p):
     '''datosusql : datosusql datousql'''
