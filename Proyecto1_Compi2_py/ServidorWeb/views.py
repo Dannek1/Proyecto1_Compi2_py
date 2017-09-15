@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 import os
+import zipfile
 
 from . import Datos
 
@@ -118,11 +119,31 @@ def ejec(request):
                 try:
                     Crear_carpeta()
                     back=paquete.split("#")
-                    print "Hola"
-                    ruta="C:\\Archivos-Base\\"+back[1][2:-1]+".udmp"
-                    f = open (ruta,'w')
-                    f.write(back[0])
-                    f.close()
+                    if back[0]=='"Backup General" ':
+                        print "hola"
+                        ruta="C:\\Archivos-Base\\"+back[2][2:-1]+".zip"
+                        comprimdio=zipfile.ZipFile(ruta,'w')
+
+                        archivos=str(back[1]).split("-.-")
+                        
+                        for x in range(len(archivos)):
+                            archivo=str(archivos[x]).split("\o/")
+                            subruta="C:\\Archivos-Base\\"+archivo[0][2:-1]+".usac"
+                            f = open (subruta,'w')
+                            f.write(archivo[1])
+                            f.close()
+                            comprimdio.write(subruta, compress_type=zipfile.ZIP_DEFLATED)
+                            os.remove(subruta)
+                            print x    
+
+                        comprimdio.close() 
+
+                    else:
+                        print "Hola"
+                        ruta="C:\\Archivos-Base\\"+back[1][2:-1]+".udmp"
+                        f = open (ruta,'w')
+                        f.write(back[0])
+                        f.close()
                     
                     respuesta=back[0];
                 except:
@@ -145,3 +166,6 @@ def Crear_carpeta():
         os.makedirs("C:\Archivos-Base")
     except:
         pass
+
+def reporte(request):
+    return render(request, 'Reportes.html')

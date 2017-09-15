@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Reportes</title>
+</head>
+
+
+<body>
+<h1>Reportes</h1>
+<form name="form2" method="GET	" action="{% url 'salir'%}">
+{% csrf_token %} 
+  <input type="submit" name="btnCerrar" id="btnCerrar" value="Salir">
+
+</form>
+<p>&nbsp;</p>
+<form name="form3" method="post" action="{% url 'Mesa'%}">
+  {% csrf_token %}
+    <input type="submit" name="btnRegresar" id="btnRegresar" value="Regresar">
+</form>
+<p>&nbsp;</p>
+<form name="form1" method="post" action="">
+  <table width="1042" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th width="521" scope="col">Entrada</th>
+      <th width="521" scope="col">Salida</th>
+    </tr>
+    <tr>
+      <td><label for="txtEntradaR2"></label>
+      <textarea name="txtEntradaR" cols="75" rows="15" id="txtEntradaR2"></textarea></td>
+      <td><label for="txtSalidaR"></label>
+      <textarea name="txtSalidaR" cols="75" rows="15" id="txtSalidaR"></textarea></td>
+    </tr>
+  </table>
+  <p>
+    <input type="submit" name="btnAceptar" id="btnAceptar" value="Enviar">
+  </p>
+  
+</form>
+<p>&nbsp;</p>
+
+
+
+</body>
+</html>

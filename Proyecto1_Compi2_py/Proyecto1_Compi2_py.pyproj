@@ -63,6 +63,7 @@
     <Content Include="ServidorWeb\Datos-remote" />
     <Content Include="ServidorWeb\templates\index.html" />
     <Content Include="ServidorWeb\templates\Mesa.html" />
+    <Content Include="ServidorWeb\templates\Reportes.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Proyecto1_Compi2_py\" />

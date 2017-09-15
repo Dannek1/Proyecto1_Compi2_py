@@ -85,6 +85,30 @@ reservadas = {
     '\"usql\"':'R_USQL',
     '\"reporte\"':'R_REPORTE',
     '\"mensaje\"':'R_MENSAJE',
+
+    '<html>': 'R_AHTML',
+    '</html>': 'R_CHTML',
+    '<head>': 'R_AHEAD',
+    '</head>': 'R_CHEAD',
+    '<body>': 'R_ABODY',
+    '</body>': 'R_CBODY',
+    '<h1>': 'R_AH1',
+    '</h1>': 'R_CH1',
+    '<h2>': 'R_AH2',
+    '</h2>': 'R_CH2',
+    '<h3>': 'R_AH3',
+    '</h3>': 'R_CH3',
+    '<h4>': 'R_AH4',
+    '</h4>': 'R_CH4',
+    '<h5>': 'R_AH5',
+    '</h5>': 'R_CH5',
+    '<h6>': 'R_AH6',
+    '</h6>': 'R_CH6',
+    '<h7>': 'R_AH7',
+    '</h7>': 'R_CH7',
+    '<USQL>': 'R_AUSQL',
+    '</USQL>': 'R_CUSQL',
+
     'true':'R_TRUE',
     'false':'R_FALSE',
     'No': 'R_NO',
@@ -154,7 +178,7 @@ def t_ENTERO(t):
     print (t.value)
     return t
 
-def t_double(t):
+def t_DECIMAL(t):
     r'[0-9]+([.][0-9]+)?'
     t.value = float(t.value)
     print (t.value)

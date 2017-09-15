@@ -12,12 +12,20 @@
   <input type="submit" name="btnCerrar" id="btnCerrar" value="Salir">
 
 </form>
+
+
+
 <form action="" method="post" enctype="multipart/form-data" name="form3">
-  <label for="Carga"></label>
-  <input type="file" name="Carga" id="Carga"> 
-  Cargar Archivo
+  <p>
+    <label for="Carga"></label>
+  Cargar Codigo</p>
+  <p>
+    <input type="file" name="Carga" id="Carga">
+  </p>
 </form>
-<p>&nbsp;</p>
+<form name="form4" method="post" action="{% url 'reporte'%}">{% csrf_token %}
+  <input type="submit" name="txtReportes" id="txtReportes" value="Reportes">
+</form>
 <form action="{% url 'ejec'%}" method="POST" enctype="multipart/form-data" name="form1" id="form1">
   <p>
     <label for="entrada"><br />
@@ -47,6 +55,27 @@
 	
 	var respuesta = getParameterByName('respuesta');		
 	document.getElementById("txtConsola").value=respuesta;
+
+function leerArchivo(e) {
+  var archivo = e.target.files[0];
+  if (!archivo) {
+    return;
+  }
+  var lector = new FileReader();
+  lector.onload = function(e) {
+    var contenido = e.target.result;
+    mostrarContenido(contenido);
+  };
+  lector.readAsText(archivo);
+}
+
+function mostrarContenido(contenido) {
+  var elemento = document.getElementById('entrada');
+  elemento.value = contenido;
+}
+
+document.getElementById('Carga')
+  .addEventListener('change', leerArchivo, false);
 	
 </script>
 <p>&nbsp;</p>	

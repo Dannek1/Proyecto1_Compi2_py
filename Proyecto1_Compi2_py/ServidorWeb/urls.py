@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^Mesa', views.mesa,name='Mesa'),
     url(r'^salir', views.inicio,name='salir'),
     url(r'^ejec', views.ejec,name='ejec'),
+    url(r'^reporte', views.reporte,name='reporte'),
     #url(r'/(?P<nomb>\w{0,30}/(?)adfasdfdfdfdf/$',viewsfsdasd
 ]
 
